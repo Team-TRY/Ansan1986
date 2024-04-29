@@ -6,9 +6,9 @@ using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 public class Chair : MonoBehaviour
 {
-    public Transform sittingPos;
-    public TMP_Text interactionText;
-    public GameObject player;
+    [SerializeField] private Transform sittingPos;
+    [SerializeField] private TMP_Text interactionText;
+    [SerializeField] private GameObject player;
     
     private Vector3 playerScale;
     private DynamicMoveProvider dynamicMoveProvider;
@@ -26,7 +26,7 @@ public class Chair : MonoBehaviour
         {
             isPlayerInRange = true;
             interactionText.gameObject.SetActive(true);
-            interactionText.text = "Press [E] to Sit";
+            interactionText.text = "Press [E] to " + (isPlayerSitting ? "Stand Up" : "Sit");
         }
     }
 
@@ -43,18 +43,17 @@ public class Chair : MonoBehaviour
     {
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
-            if (!isPlayerSitting)
-            {
-                SitOnChair();
-                isPlayerSitting = true;
-                interactionText.text = "Press [E] to Stand Up";
-            }
-            else
+            if (isPlayerSitting)
             {
                 Standing();
                 isPlayerSitting = false;
-                interactionText.text = "Press [E] to Sit";
             }
+            else
+            {
+                SitOnChair();
+                isPlayerSitting = true;
+            }
+            interactionText.text = "Press [E] to " + (isPlayerSitting ? "Stand Up" : "Sit");
         }
     }
     
@@ -62,24 +61,14 @@ public class Chair : MonoBehaviour
     {
         player.transform.position = sittingPos.position;
         player.transform.localScale *= 0.5f;
-        
-        if (dynamicMoveProvider != null)
-        {
-            dynamicMoveProvider.moveSpeed = 0f;
-        }
-        
-        Debug.Log("Player is now sitting on the chair.");
+        if (dynamicMoveProvider != null) dynamicMoveProvider.moveSpeed = isPlayerSitting ? 0f : 1f;
+        Debug.Log("Player is now " + (isPlayerSitting ? "sitting" : "standing") + " on the chair.");
     }
     
     private void Standing()
     {
         player.transform.localScale = playerScale;
-        
-        if (dynamicMoveProvider != null)
-        {
-            dynamicMoveProvider.moveSpeed = 1f;
-        }
-        
-        Debug.Log("Player is now standing.");
+        if (dynamicMoveProvider != null) dynamicMoveProvider.moveSpeed = isPlayerSitting ? 1f : 0f;
+        Debug.Log("Player is now " + (isPlayerSitting ? "standing" : "sitting") + ".");
     }
 }
