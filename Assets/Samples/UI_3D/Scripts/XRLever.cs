@@ -3,12 +3,9 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace UnityEngine.XR.Content.Interaction
 {
-    /// <summary>
-    /// An interactable lever that snaps into an on or off position by a direct interactor
-    /// </summary>
     public class XRLever : XRBaseInteractable
     {
-        const float k_LeverDeadZone = 0.1f; // Prevents rapid switching between on and off states when right in the middle
+        const float k_LeverDeadZone = 0.1f;
 
         [SerializeField]
         [Tooltip("The object that is visually grabbed and manipulated")]
@@ -41,56 +38,35 @@ namespace UnityEngine.XR.Content.Interaction
         UnityEvent m_OnLeverDeactivate = new UnityEvent();
 
         IXRSelectInteractor m_Interactor;
-
-        /// <summary>
-        /// The object that is visually grabbed and manipulated
-        /// </summary>
+        
         public Transform handle
         {
             get => m_Handle;
             set => m_Handle = value;
         }
-
-        /// <summary>
-        /// The value of the lever
-        /// </summary>
+        
         public bool value
         {
             get => m_Value;
             set => SetValue(value, true);
         }
-
-        /// <summary>
-        /// If enabled, the lever will snap to the value position when released
-        /// </summary>
+        
         public bool lockToValue { get; set; }
-
-        /// <summary>
-        /// Angle of the lever in the 'on' position
-        /// </summary>
+        
         public float maxAngle
         {
             get => m_MaxAngle;
             set => m_MaxAngle = value;
         }
-
-        /// <summary>
-        /// Angle of the lever in the 'off' position
-        /// </summary>
+        
         public float minAngle
         {
             get => m_MinAngle;
             set => m_MinAngle = value;
         }
-
-        /// <summary>
-        /// Events to trigger when the lever activates
-        /// </summary>
+        
         public UnityEvent onLeverActivate => m_OnLeverActivate;
-
-        /// <summary>
-        /// Events to trigger when the lever deactivates
-        /// </summary>
+        
         public UnityEvent onLeverDeactivate => m_OnLeverDeactivate;
 
         void Start()

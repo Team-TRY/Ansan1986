@@ -5,11 +5,10 @@ using UnityEngine;
 
 public class BusDrivingController : MonoBehaviour
 {
-    [SerializeField] private Transform _FLWheel, _FRWheel, _BLWheel, _BRWheel;
+    [SerializeField] private MeshRenderer _FLWheel, _FRWheel, _BLWheel, _BRWheel;
     [SerializeField] private WheelCollider _FLWheelCol, _FRWheelCol, _BLWheelCol, _BRWheelCol;
 
-    [SerializeField] private Rigidbody rb;
-
+    private Rigidbody rb;
     private float moveInput;
     private float steeringInput;
 
@@ -26,6 +25,7 @@ public class BusDrivingController : MonoBehaviour
         CheckInputs();
         AppplyPower();
         ApplySteering();
+        //UpdateWheel();
     }
 
     private void CheckInputs()
@@ -44,5 +44,25 @@ public class BusDrivingController : MonoBehaviour
     {
         _FLWheelCol.steerAngle = steeringInput * steeringPower;
         _FRWheelCol.steerAngle = steeringInput * steeringPower;
+    }
+
+
+    private void UpdateWheel()
+    {
+        UpdatePos(_FLWheelCol, _FLWheel);
+        UpdatePos(_FRWheelCol, _FRWheel);
+        UpdatePos(_BLWheelCol, _BLWheel);
+        UpdatePos(_BRWheelCol, _BRWheel);
+    }
+    private void UpdatePos(WheelCollider col, MeshRenderer mesh)
+    {
+        Quaternion quaternion;
+        Vector3 pos;
+        col.GetWorldPose(out pos, out quaternion);
+        
+        mesh.transform.position = pos;
+        mesh.transform.rotation = quaternion;
+
+        mesh.transform.localScale = col.transform.localScale;
     }
 }

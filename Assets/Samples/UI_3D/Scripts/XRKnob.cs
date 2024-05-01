@@ -4,55 +4,29 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace UnityEngine.XR.Content.Interaction
 {
-    /// <summary>
-    /// An interactable knob that follows the rotation of the interactor
-    /// </summary>
     public class XRKnob : XRBaseInteractable
     {
-        const float k_ModeSwitchDeadZone = 0.1f; // Prevents rapid switching between the different rotation tracking modes
-
-        /// <summary>
-        /// Helper class used to track rotations that can go beyond 180 degrees while minimizing accumulation error
-        /// </summary>
+        const float k_ModeSwitchDeadZone = 0.1f;
+        
         struct TrackedRotation
         {
-            /// <summary>
-            /// The anchor rotation we calculate an offset from
-            /// </summary>
             float m_BaseAngle;
-
-            /// <summary>
-            /// The target rotate we calculate the offset to
-            /// </summary>
+            
             float m_CurrentOffset;
-
-            /// <summary>
-            /// Any previous offsets we've added in
-            /// </summary>
+            
             float m_AccumulatedAngle;
-
-            /// <summary>
-            /// The total rotation that occurred from when this rotation started being tracked
-            /// </summary>
+            
             public float totalOffset => m_AccumulatedAngle + m_CurrentOffset;
-
-            /// <summary>
-            /// Resets the tracked rotation so that total offset returns 0
-            /// </summary>
+            
             public void Reset()
             {
                 m_BaseAngle = 0.0f;
                 m_CurrentOffset = 0.0f;
                 m_AccumulatedAngle = 0.0f;
             }
-
-            /// <summary>
-            /// Sets a new anchor rotation while maintaining any previously accumulated offset
-            /// </summary>
-            /// <param name="direction">The XZ vector used to calculate a rotation angle</param>
+            
             public void SetBaseFromVector(Vector3 direction)
             {
-                // Update any accumulated angle
                 m_AccumulatedAngle += m_CurrentOffset;
 
                 // Now set a new base angle
@@ -128,10 +102,7 @@ namespace UnityEngine.XR.Content.Interaction
         TrackedRotation m_ForwardVectorAngles = new TrackedRotation();
 
         float m_BaseKnobRotation = 0.0f;
-
-        /// <summary>
-        /// The object that is visually grabbed and manipulated
-        /// </summary>
+        
         public Transform handle
         {
             get => m_Handle;
