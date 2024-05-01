@@ -45,6 +45,8 @@ public class UIMainMenu : MonoBehaviour
 
     void OpenPopup_QuitGame()
     {
-        
+        UIPopup popup = UIManager.Instance.OpenUI<UIPopup>();
+        popup.SetPopup("게임 종료", "게임을 종료하시겠습니까?", () => { UnityEditor.EditorApplication.isPlaying = false; });
+
     }
 }
