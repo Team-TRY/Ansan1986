@@ -183,8 +183,8 @@ MonoBehaviour:
   btnBack: {fileID: 402834287}
   btnConfirm: {fileID: 565504748}
   btnCancel: {fileID: 1952347890}
-  clickSound: {fileID: 0}
-  popupSound: {fileID: 0}
+  clickSound: {fileID: 8300000, guid: 93f2dbafd8ab9ce41839358bbcf54947, type: 3}
+  popupSound: {fileID: 8300000, guid: aa884a2cd6c0bb04fb4258dc65a31157, type: 3}
 --- !u!1 &136065410
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,7 +911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnBack: {fileID: 136065412}
-  clickSound: {fileID: 0}
+  clickSound: {fileID: 8300000, guid: 93f2dbafd8ab9ce41839358bbcf54947, type: 3}
 --- !u!1 &565504746
 GameObject:
   m_ObjectHideFlags: 0
@@ -1502,7 +1502,7 @@ MonoBehaviour:
   btnSettings: {fileID: 2042861407}
   btnCredits: {fileID: 1854915555}
   btnQuitGame: {fileID: 1469291673}
-  clickSound: {fileID: 0}
+  clickSound: {fileID: 8300000, guid: 93f2dbafd8ab9ce41839358bbcf54947, type: 3}
 --- !u!1 &904734769
 GameObject:
   m_ObjectHideFlags: 0
@@ -2931,7 +2931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnBack: {fileID: 1399103342}
-  clickSound: {fileID: 0}
+  clickSound: {fileID: 8300000, guid: 93f2dbafd8ab9ce41839358bbcf54947, type: 3}
 --- !u!1 &1469291671
 GameObject:
   m_ObjectHideFlags: 0

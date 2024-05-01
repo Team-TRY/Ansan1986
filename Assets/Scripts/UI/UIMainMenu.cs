@@ -16,17 +16,12 @@ public class UIMainMenu : MonoBehaviour
 
     private void Start()
     {
-        //Action buttonClickAction = () => SoundManager.Instance.SFXPlay("btnClick", clickSound);
+        Action buttonClickAction = () => SoundManager.Instance.SFXPlay("btnClick", clickSound);
 
-        // btnStartGame.onClick.AddListener(() => { buttonClickAction(); OpenPanel_StartGame(); });
-        // btnSettings.onClick.AddListener(() => { buttonClickAction(); OpenPanel_Settings(); });
-        // btnCredits.onClick.AddListener(() => { buttonClickAction(); OpenPanel_Credits(); });
-        // btnQuitGame.onClick.AddListener(() => { buttonClickAction(); OpenPopup_QuitGame(); });
-        
-        btnStartGame.onClick.AddListener(() => { OpenPanel_StartGame(); });
-        btnSettings.onClick.AddListener(() => { OpenPanel_Settings(); });
-        btnCredits.onClick.AddListener(() => { OpenPanel_Credits(); });
-        btnQuitGame.onClick.AddListener(() => { OpenPopup_QuitGame(); });
+        btnStartGame.onClick.AddListener(() => { buttonClickAction(); OpenPanel_StartGame(); });
+        btnSettings.onClick.AddListener(() => { buttonClickAction(); OpenPanel_Settings(); });
+        btnCredits.onClick.AddListener(() => { buttonClickAction(); OpenPanel_Credits(); });
+        btnQuitGame.onClick.AddListener(() => { buttonClickAction(); OpenPopup_QuitGame(); });
     }
     public void OpenPanel_StartGame()
     {
@@ -46,7 +41,7 @@ public class UIMainMenu : MonoBehaviour
     void OpenPopup_QuitGame()
     {
         UIPopup popup = UIManager.Instance.OpenUI<UIPopup>();
-        popup.SetPopup("게임 종료", "게임을 종료하시겠습니까?", () => { UnityEditor.EditorApplication.isPlaying = false; });
+        popup.SetPopup("게임 종료", "게임을 종료하시겠습니까?", () => { ScenesManager.Instance.QuitGame(); });
 
     }
 }

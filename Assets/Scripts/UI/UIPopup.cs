@@ -37,7 +37,7 @@ public class UIPopup : MonoBehaviour
 
     public void SetPopup(string title, string content, Action onConfirm = null)
     {
-        //SoundManager.Instance.SFXPlay("popup", popupSound);
+        SoundManager.Instance.SFXPlay("popup", popupSound);
         txtTitle.text = title;
         txtContent.text = content;
 
@@ -46,7 +46,7 @@ public class UIPopup : MonoBehaviour
     
     void Confirm()
     {
-        //SoundManager.Instance.SFXPlay("btnClick", clickSound);
+        SoundManager.Instance.SFXPlay("btnClick", clickSound);
         if (OnConfirm != null)
         {
             OnConfirm();
@@ -58,7 +58,7 @@ public class UIPopup : MonoBehaviour
 
     void Close()
     {
-        //SoundManager.Instance.SFXPlay("btnClick", clickSound);
+        SoundManager.Instance.SFXPlay("btnClick", clickSound);
         gameObject.SetActive(false);
     }
 }
