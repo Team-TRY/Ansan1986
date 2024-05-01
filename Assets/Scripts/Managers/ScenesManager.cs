@@ -7,11 +7,8 @@ using UnityEngine.UI;
 
 public class ScenesManager : MonoBehaviour
 {
+    [SerializeField] private ScreenFader screenFader;
     public static ScenesManager Instance;
-    
-    [SerializeField] private GameObject loaderUI;
-    [SerializeField] private Slider progressSlider;
-    [SerializeField] private Animator animator;
     
     private void Awake()
     {
@@ -24,35 +21,38 @@ public class ScenesManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
-
+    
     public enum Scene
     {
-        KNW_TestScene,
         MainMenu,
-        Lobby,
-        Stage01,
-        Stage02,
-        Stage03,
-        Ending
+        MainGame
     }
-    
-    //기본 씬 로드
+
     public void LoadScene(Scene scene)
     {
-        string sceneName = scene.ToString();
-        StartCoroutine(LoadSceneAsync(sceneName));
+        StartCoroutine(LoadSceneAsyncRoutine(scene));
     }
-    
-    //현재 씬 로드
-    public void LoadCurrentScene()
+
+    IEnumerator LoadSceneAsyncRoutine(Scene scene)
     {
-        string currentSceneName = SceneManager.GetActiveScene().name;
-        StartCoroutine(LoadSceneAsync(currentSceneName));
+        screenFader.FadeOut();
+
+        string sceneName = scene.ToString();
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
+        operation.allowSceneActivation = false;
+
+        float timer = 0;
+        while(timer <= screenFader.fadeDuration && !operation.isDone)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        operation.allowSceneActivation = true;
     }
     
-    //게임 종료
     public void QuitGame()
     {
 #if UNITY_EDITOR
@@ -60,38 +60,5 @@ public class ScenesManager : MonoBehaviour
 #else
         Application.Quit();
 #endif
-    }
-    
-    //비동기 씬 로딩, 로당 화면
-    private IEnumerator LoadSceneAsync(string sceneName)
-    {
-        Time.timeScale = 1;
-        progressSlider.value = 0;
-        
-        animator.SetTrigger("FadeOut");
-        yield return new WaitForSeconds(1f);
-        
-        loaderUI.SetActive(true);
-
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
-        asyncOperation.allowSceneActivation = false;
-
-        float progress = 0;
-        while (!asyncOperation.isDone)
-        {
-            progress = Mathf.MoveTowards(progress, asyncOperation.progress, Time.deltaTime);
-            progressSlider.value = progress;
-
-            if (progress >= 0.9f)
-            {
-                progressSlider.value = 1;
-                asyncOperation.allowSceneActivation = true;
-                loaderUI.SetActive(false);
-                
-                animator.SetTrigger("FadeIn");
-            }
-
-            yield return null;
-        }
     }
 }

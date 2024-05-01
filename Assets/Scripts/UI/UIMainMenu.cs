@@ -30,7 +30,7 @@ public class UIMainMenu : MonoBehaviour
     }
     public void OpenPanel_StartGame()
     {
-        
+        ScenesManager.Instance.LoadScene(ScenesManager.Scene.MainGame);
     }
 
     void OpenPanel_Settings()
