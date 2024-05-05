@@ -30,17 +30,17 @@ public class UIMainMenu : MonoBehaviour
 
     void OpenPanel_Settings()
     {
-        UIManager.Instance.OpenUI<UISettings>();
+        UIManager.Instance.OpenUI<UISettings>(0);
     }
 
     void OpenPanel_Credits()
     {
-        UIManager.Instance.OpenUI<UICredits>();
+        UIManager.Instance.OpenUI<UICredits>(0);
     }
 
     void OpenPopup_QuitGame()
     {
-        UIPopup popup = UIManager.Instance.OpenUI<UIPopup>();
+        UIPopup popup = UIManager.Instance.OpenUI<UIPopup>(0);
         popup.SetPopup("게임 종료", "게임을 종료하시겠습니까?", () => { ScenesManager.Instance.QuitGame(); });
 
     }

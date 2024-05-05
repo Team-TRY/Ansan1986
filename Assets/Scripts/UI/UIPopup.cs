@@ -59,6 +59,10 @@ public class UIPopup : MonoBehaviour
     void Close()
     {
         SoundManager.Instance.SFXPlay("btnClick", clickSound);
-        gameObject.SetActive(false);
+        var animUI = gameObject.GetComponent<DotweenUIManager>();
+        if (animUI != null)
+        {
+            animUI.MinFade(gameObject);
+        }
     }
 }

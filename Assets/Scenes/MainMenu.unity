@@ -423,6 +423,8 @@ GameObject:
   m_Component:
   - component: {fileID: 127869559}
   - component: {fileID: 127869560}
+  - component: {fileID: 127869561}
+  - component: {fileID: 127869562}
   m_Layer: 5
   m_Name: UIPopup
   m_TagString: Untagged
@@ -475,6 +477,31 @@ MonoBehaviour:
   btnCancel: {fileID: 1952347890}
   clickSound: {fileID: 8300000, guid: 93f2dbafd8ab9ce41839358bbcf54947, type: 3}
   popupSound: {fileID: 8300000, guid: aa884a2cd6c0bb04fb4258dc65a31157, type: 3}
+--- !u!225 &127869561
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127869558}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &127869562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127869558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f86a896791fca4185268ae20d7457d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transSpeed: 0.5
 --- !u!1 &130559706
 GameObject:
   m_ObjectHideFlags: 0
@@ -1511,6 +1538,8 @@ GameObject:
   m_Component:
   - component: {fileID: 504558750}
   - component: {fileID: 504558751}
+  - component: {fileID: 504558752}
+  - component: {fileID: 504558753}
   m_Layer: 5
   m_Name: UISettings
   m_TagString: Untagged
@@ -1554,6 +1583,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   btnBack: {fileID: 136065412}
   clickSound: {fileID: 8300000, guid: 93f2dbafd8ab9ce41839358bbcf54947, type: 3}
+--- !u!225 &504558752
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504558749}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &504558753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504558749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f86a896791fca4185268ae20d7457d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transSpeed: 0.5
 --- !u!1 &523665719
 GameObject:
   m_ObjectHideFlags: 0
@@ -6455,6 +6509,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1456481281}
   - component: {fileID: 1456481282}
+  - component: {fileID: 1456481283}
+  - component: {fileID: 1456481284}
   m_Layer: 5
   m_Name: UICredits
   m_TagString: Untagged
@@ -6498,6 +6554,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   btnBack: {fileID: 1399103342}
   clickSound: {fileID: 8300000, guid: 93f2dbafd8ab9ce41839358bbcf54947, type: 3}
+--- !u!225 &1456481283
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456481280}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &1456481284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456481280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f86a896791fca4185268ae20d7457d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transSpeed: 0.5
 --- !u!1 &1462812593
 GameObject:
   m_ObjectHideFlags: 0
