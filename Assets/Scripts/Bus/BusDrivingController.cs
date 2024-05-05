@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.XR.Content.Interaction;
 
@@ -17,6 +18,8 @@ public class BusDrivingController : MonoBehaviour
 
     [SerializeField] private XRLever _lever;
     [SerializeField] private XRKnob _knob;
+    
+    [SerializeField] private TMP_Text speedText;
 
     private void Start()
     {
@@ -29,6 +32,7 @@ public class BusDrivingController : MonoBehaviour
         AppplyPower();
         ApplySteering();
         UpdateWheel();
+        DisplaySpeed();
     }
 
     private void CheckInputs()
@@ -79,5 +83,11 @@ public class BusDrivingController : MonoBehaviour
         mesh.transform.rotation = quaternion;
 
         mesh.transform.localScale = col.transform.localScale;
+    }
+    
+    private void DisplaySpeed()
+    {
+        float speed = rb.velocity.magnitude * 3.6f;
+        speedText.text = "Speed: " + speed.ToString("0.00") + " km/h";
     }
 }
