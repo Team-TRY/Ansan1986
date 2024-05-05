@@ -28,7 +28,7 @@ public class BusDrivingController : MonoBehaviour
         CheckInputs();
         AppplyPower();
         ApplySteering();
-        //UpdateWheel();
+        UpdateWheel();
     }
 
     private void CheckInputs()
