@@ -16,6 +16,7 @@ public class BusDrivingController : MonoBehaviour
     [SerializeField] private float steeringPower;
 
     [SerializeField] private XRLever _lever;
+    [SerializeField] private XRKnob _knob;
 
     private void Start()
     {
@@ -35,17 +36,17 @@ public class BusDrivingController : MonoBehaviour
         switch (_lever.state)
         {
             case LeverState.Forward:
-                moveInput = 1f; // 전진
+                moveInput = 1f;
                 break;
             case LeverState.Neutral:
-                moveInput = 0f; // 정지
+                moveInput = 0f;
                 break;
             case LeverState.Reverse:
-                moveInput = -1f; // 후진
+                moveInput = -1f;
                 break;
         }
-
-        steeringInput = Input.GetAxis("Horizontal");
+        
+        steeringInput = _knob.value * 2f - 1f; 
     }
 
     private void AppplyPower()
