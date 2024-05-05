@@ -1,7 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Content.Interaction;
 
 public class BusDrivingController : MonoBehaviour
 {
@@ -14,6 +14,8 @@ public class BusDrivingController : MonoBehaviour
 
     [SerializeField] private float motorPower;
     [SerializeField] private float steeringPower;
+
+    [SerializeField] private XRLever _lever;
 
     private void Start()
     {
@@ -30,7 +32,19 @@ public class BusDrivingController : MonoBehaviour
 
     private void CheckInputs()
     {
-        moveInput = Input.GetAxis("Vertical");
+        switch (_lever.state)
+        {
+            case LeverState.Forward:
+                moveInput = 1f; // 전진
+                break;
+            case LeverState.Neutral:
+                moveInput = 0f; // 정지
+                break;
+            case LeverState.Reverse:
+                moveInput = -1f; // 후진
+                break;
+        }
+
         steeringInput = Input.GetAxis("Horizontal");
     }
 
@@ -46,7 +60,6 @@ public class BusDrivingController : MonoBehaviour
         _FRWheelCol.steerAngle = steeringInput * steeringPower;
     }
 
-
     private void UpdateWheel()
     {
         UpdatePos(_FLWheelCol, _FLWheel);
@@ -54,12 +67,13 @@ public class BusDrivingController : MonoBehaviour
         UpdatePos(_BLWheelCol, _BLWheel);
         UpdatePos(_BRWheelCol, _BRWheel);
     }
+
     private void UpdatePos(WheelCollider col, MeshRenderer mesh)
     {
         Quaternion quaternion;
         Vector3 pos;
         col.GetWorldPose(out pos, out quaternion);
-        
+
         mesh.transform.position = pos;
         mesh.transform.rotation = quaternion;
 
