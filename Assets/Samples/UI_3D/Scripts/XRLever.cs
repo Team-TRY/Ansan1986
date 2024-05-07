@@ -1,77 +1,66 @@
 using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
 
+using UnityEngine;
+using UnityEngine.Events;
+
 namespace UnityEngine.XR.Content.Interaction
 {
+    public enum LeverState
+    {
+        Forward,
+        Neutral,
+        Reverse
+    }
+
     public class XRLever : XRBaseInteractable
     {
         const float k_LeverDeadZone = 0.1f;
 
-        [SerializeField]
-        [Tooltip("The object that is visually grabbed and manipulated")]
-        Transform m_Handle = null;
-
-        [SerializeField]
-        [Tooltip("The value of the lever")]
-        bool m_Value = false;
-
-        [SerializeField]
-        [Tooltip("If enabled, the lever will snap to the value position when released")]
-        bool m_LockToValue;
-
-        [SerializeField]
-        [Tooltip("Angle of the lever in the 'on' position")]
-        [Range(-90.0f, 90.0f)]
-        float m_MaxAngle = 90.0f;
-
-        [SerializeField]
-        [Tooltip("Angle of the lever in the 'off' position")]
-        [Range(-90.0f, 90.0f)]
-        float m_MinAngle = -90.0f;
-
-        [SerializeField]
-        [Tooltip("Events to trigger when the lever activates")]
-        UnityEvent m_OnLeverActivate = new UnityEvent();
-
-        [SerializeField]
-        [Tooltip("Events to trigger when the lever deactivates")]
-        UnityEvent m_OnLeverDeactivate = new UnityEvent();
+        [SerializeField] Transform m_Handle = null;
+        [SerializeField] LeverState m_State = LeverState.Neutral;
+        [SerializeField] bool m_LockToState;
+        [SerializeField] float m_MaxAngle = 90.0f;
+        [SerializeField] float m_MinAngle = -90.0f;
+        [SerializeField] UnityEvent m_OnStateChange = new UnityEvent();
 
         IXRSelectInteractor m_Interactor;
-        
+
         public Transform handle
         {
             get => m_Handle;
             set => m_Handle = value;
         }
-        
-        public bool value
+
+        public LeverState state
         {
-            get => m_Value;
-            set => SetValue(value, true);
+            get => m_State;
+            set => SetState(value, true);
         }
-        
-        public bool lockToValue { get; set; }
-        
+
+        public bool lockToState
+        {
+            get => m_LockToState;
+            set => m_LockToState = value;
+        }
+
         public float maxAngle
         {
             get => m_MaxAngle;
             set => m_MaxAngle = value;
         }
-        
+
         public float minAngle
         {
             get => m_MinAngle;
             set => m_MinAngle = value;
         }
-        
-        public UnityEvent onLeverActivate => m_OnLeverActivate;
-        
-        public UnityEvent onLeverDeactivate => m_OnLeverDeactivate;
+
+        public UnityEvent onStateChange => m_OnStateChange;
 
         void Start()
         {
-            SetValue(m_Value, true);
+            SetState(m_State, true);
         }
 
         protected override void OnEnable()
@@ -95,7 +84,7 @@ namespace UnityEngine.XR.Content.Interaction
 
         void EndGrab(SelectExitEventArgs args)
         {
-            SetValue(m_Value, true);
+            SetState(m_State, true);
             m_Interactor = null;
         }
 
@@ -107,7 +96,7 @@ namespace UnityEngine.XR.Content.Interaction
             {
                 if (isSelected)
                 {
-                    UpdateValue();
+                    UpdateState();
                 }
             }
         }
@@ -121,7 +110,7 @@ namespace UnityEngine.XR.Content.Interaction
             return direction.normalized;
         }
 
-        void UpdateValue()
+        void UpdateState()
         {
             var lookDirection = GetLookDirection();
             var lookAngle = Mathf.Atan2(lookDirection.z, lookDirection.y) * Mathf.Rad2Deg;
@@ -134,45 +123,52 @@ namespace UnityEngine.XR.Content.Interaction
             var maxAngleDistance = Mathf.Abs(m_MaxAngle - lookAngle);
             var minAngleDistance = Mathf.Abs(m_MinAngle - lookAngle);
 
-            if (m_Value)
-                maxAngleDistance *= (1.0f - k_LeverDeadZone);
-            else
-                minAngleDistance *= (1.0f - k_LeverDeadZone);
+            var newState = LeverState.Neutral;
 
-            var newValue = (maxAngleDistance < minAngleDistance);
+            if (maxAngleDistance < minAngleDistance * (1.0f - k_LeverDeadZone))
+                newState = LeverState.Forward;
+            else if (minAngleDistance < maxAngleDistance * (1.0f - k_LeverDeadZone))
+                newState = LeverState.Reverse;
 
-            SetHandleAngle(lookAngle);
+            SetHandleAngle(newState);
 
-            SetValue(newValue);
+            SetState(newState);
         }
 
-        void SetValue(bool isOn, bool forceRotation = false)
+        void SetState(LeverState newState, bool forceRotation = false)
         {
-            if (m_Value == isOn)
+            if (m_State == newState)
             {
                 if (forceRotation)
-                    SetHandleAngle(m_Value ? m_MaxAngle : m_MinAngle);
+                    SetHandleAngle(newState);
 
                 return;
             }
 
-            m_Value = isOn;
+            m_State = newState;
 
-            if (m_Value)
-            {
-                m_OnLeverActivate.Invoke();
-            }
-            else
-            {
-                m_OnLeverDeactivate.Invoke();
-            }
+            m_OnStateChange.Invoke();
 
-            if (!isSelected && (m_LockToValue || forceRotation))
-                SetHandleAngle(m_Value ? m_MaxAngle : m_MinAngle);
+            if (!isSelected && (m_LockToState || forceRotation))
+                SetHandleAngle(newState);
         }
 
-        void SetHandleAngle(float angle)
+        void SetHandleAngle(LeverState state)
         {
+            float angle = 0f;
+            switch (state)
+            {
+                case LeverState.Forward:
+                    angle = m_MaxAngle;
+                    break;
+                case LeverState.Neutral:
+                    angle = (m_MaxAngle + m_MinAngle) / 2f;
+                    break;
+                case LeverState.Reverse:
+                    angle = m_MinAngle;
+                    break;
+            }
+
             if (m_Handle != null)
                 m_Handle.localRotation = Quaternion.Euler(angle, 0.0f, 0.0f);
         }
@@ -198,7 +194,7 @@ namespace UnityEngine.XR.Content.Interaction
 
         void OnValidate()
         {
-            SetHandleAngle(m_Value ? m_MaxAngle : m_MinAngle);
+            SetHandleAngle(m_State);
         }
     }
 }
