@@ -1,7 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.XR.Content.Interaction;
 
 public class BusDrivingController : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class BusDrivingController : MonoBehaviour
     [SerializeField] private float motorPower;
     [SerializeField] private float steeringPower;
 
+    [SerializeField] private XRLever _lever;
+    [SerializeField] private XRKnob _knob;
+    
+    [SerializeField] private TMP_Text speedText;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -25,13 +31,26 @@ public class BusDrivingController : MonoBehaviour
         CheckInputs();
         AppplyPower();
         ApplySteering();
-        //UpdateWheel();
+        UpdateWheel();
+        DisplaySpeed();
     }
 
     private void CheckInputs()
     {
-        moveInput = Input.GetAxis("Vertical");
-        steeringInput = Input.GetAxis("Horizontal");
+        switch (_lever.state)
+        {
+            case LeverState.Forward:
+                moveInput = 1f;
+                break;
+            case LeverState.Neutral:
+                moveInput = 0f;
+                break;
+            case LeverState.Reverse:
+                moveInput = -1f;
+                break;
+        }
+        
+        steeringInput = _knob.value * 2f - 1f; 
     }
 
     private void AppplyPower()
@@ -46,7 +65,6 @@ public class BusDrivingController : MonoBehaviour
         _FRWheelCol.steerAngle = steeringInput * steeringPower;
     }
 
-
     private void UpdateWheel()
     {
         UpdatePos(_FLWheelCol, _FLWheel);
@@ -54,15 +72,22 @@ public class BusDrivingController : MonoBehaviour
         UpdatePos(_BLWheelCol, _BLWheel);
         UpdatePos(_BRWheelCol, _BRWheel);
     }
+
     private void UpdatePos(WheelCollider col, MeshRenderer mesh)
     {
         Quaternion quaternion;
         Vector3 pos;
         col.GetWorldPose(out pos, out quaternion);
-        
+
         mesh.transform.position = pos;
         mesh.transform.rotation = quaternion;
 
         mesh.transform.localScale = col.transform.localScale;
+    }
+    
+    private void DisplaySpeed()
+    {
+        float speed = rb.velocity.magnitude * 3.6f;
+        speedText.text = "Speed: " + speed.ToString("0.00") + " km/h";
     }
 }

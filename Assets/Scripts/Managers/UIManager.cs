@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
         InitUIList();
     }
 
-    void InitUIList()   
+    void InitUIList()
     {
         int uiCount = transform.childCount;
         for (int i = 0; i < uiCount; i++)
@@ -26,10 +26,23 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public T OpenUI<T>()
+    public T OpenUI<T>(int animationType)
     {
         var obj = _uiList[typeof(T).Name];
         obj.SetActive(true);
+
+        var animUI = obj.GetComponentInChildren<DotweenUIManager>();
+        if (animUI != null)
+        {
+            if (animationType == 0)
+            {
+                animUI.MaxFade(obj);
+            }
+            else if (animationType == 1)
+            {
+                animUI.MoveDown(obj);
+            }
+        }
 
         return obj.GetComponent<T>();
     }
