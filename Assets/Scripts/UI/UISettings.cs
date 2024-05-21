@@ -19,6 +19,10 @@ public class UISettings : MonoBehaviour
         {
             SoundManager.Instance.SFXPlay("btnClick", clickSound);
         }
-        gameObject.SetActive(false);
+        var animUI = gameObject.GetComponent<DotweenUIManager>();
+        if (animUI != null)
+        {
+            animUI.MinFade(gameObject);
+        }
     }
 }
