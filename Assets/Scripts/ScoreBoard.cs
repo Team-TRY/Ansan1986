@@ -17,5 +17,14 @@ public class ScoreBoard : MonoBehaviour
 
     }
 
+    public void ReplayButton()
+    {
+        this.gameObject.SetActive(false);
+        this.transform.Find("Star1").gameObject.SetActive(false);
+        this.transform.Find("Star3").gameObject.SetActive(false);
+        this.transform.Find("Star3").gameObject.SetActive(false);
+        tmp.text= "Score : 0";
+        ScoreManager.score = 0;
 
+    }
 }

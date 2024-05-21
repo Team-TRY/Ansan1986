@@ -6,7 +6,7 @@ using UnityEngine.SocialPlatforms.Impl;
 public class ScoreManager : MonoBehaviour
 {
 
-    static public int score = 1500;
+    static public int score = 0;
 
     public enum ScoreCategory
     {
