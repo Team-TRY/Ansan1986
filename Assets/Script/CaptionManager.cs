@@ -35,6 +35,7 @@ public class CaptionManager : MonoBehaviour
         }
     }
 
+//  D키를 눌렀을때 대사 변경
     public IEnumerator ShowCaption(Caption caption)
     {
         foreach(var line in caption.lines)
