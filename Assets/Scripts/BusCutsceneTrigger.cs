@@ -10,6 +10,8 @@ public class BusCutsceneTrigger : MonoBehaviour
     public GameObject busObject;
     public GameObject lever;
     public GameObject animBus;
+    public GameObject busChar;
+    public GameObject animChar;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -35,5 +37,8 @@ public class BusCutsceneTrigger : MonoBehaviour
         timeLine.Stop();
         busObject.SetActive(true);
         animBus.SetActive(false);
+        
+        busChar.SetActive(true);
+        animChar.SetActive(false);
     }
 }
