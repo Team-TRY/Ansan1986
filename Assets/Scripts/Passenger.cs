@@ -7,6 +7,9 @@ public class Passenger : MonoBehaviour
     public Animator animator;
     public Transform assignedSeat;
 
+    public string destinationStop;
+    public bool isSeated = false; 
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -56,5 +59,11 @@ public class Passenger : MonoBehaviour
         transform.localPosition = Vector3.zero;  
         transform.localRotation = Quaternion.identity;  
         animator.SetBool("isSitting", true); 
+    }
+    
+    public void Disembark()
+    {
+        isSeated = false;
+        gameObject.SetActive(false);
     }
 }

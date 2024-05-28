@@ -31,7 +31,7 @@ public class BusDrivingController : MonoBehaviour
         CheckInputs();
         AppplyPower();
         ApplySteering();
-        UpdateWheel();
+        //UpdateWheel();
         DisplaySpeed();
     }
 

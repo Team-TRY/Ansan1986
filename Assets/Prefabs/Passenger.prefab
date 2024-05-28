@@ -902,7 +902,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 5033469268859210858}
   animator: {fileID: 2999065971780946521}
-  path: {fileID: 0}
+  path: {fileID: 919132149155446097, guid: f924144c53d617a41b68ffa98bacb600, type: 3}
   pathPoints:
   - {fileID: 0}
   - {fileID: 0}

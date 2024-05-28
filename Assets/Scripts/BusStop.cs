@@ -5,6 +5,8 @@ public class BusStop : MonoBehaviour
     public TestBusController busController;
     public Transform doorTransform;
 
+    public string stopName;
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == busController.gameObject)
