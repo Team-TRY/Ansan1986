@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc39d3bfca4a634ea2a5c84b891190f, type: 3}
+  m_Name: TestingDemo_Joke
+  m_EditorClassIdentifier: 
+  dialogues:
+  - content: 
+    displayTime: 0
+  - content: let me tell u a story
+    displayTime: 3
+  - content: A teacher asked her students to use the word "beans" in a sentenc
+    displayTime: 3
+  - content: One student replied, "My father grows beans."One student replied, "My
+      father grows beans."
+    displayTime: 3
+  - content: 
+    displayTime: 0
+  - content: Another said, "My mother cooks beans."
+    displayTime: 3
+  - content: A third student spoke up, "We are all human beans."
+    displayTime: 3
+  - content: ...Not ineresting right?
+    displayTime: 3
