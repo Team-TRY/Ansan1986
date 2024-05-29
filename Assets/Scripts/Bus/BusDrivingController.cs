@@ -13,7 +13,7 @@ public class BusDrivingController : MonoBehaviour
     private float moveInput;
     private float steeringInput;
 
-    [SerializeField] private float motorPower;
+    public float motorPower;
     [SerializeField] private float steeringPower;
 
     [SerializeField] private XRLever _lever;
@@ -31,7 +31,7 @@ public class BusDrivingController : MonoBehaviour
         CheckInputs();
         AppplyPower();
         ApplySteering();
-        UpdateWheel();
+        //UpdateWheel();
         DisplaySpeed();
     }
 
