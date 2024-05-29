@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 78eef9efa83cc2f45a95e954ea1026ca
+timeCreated: 1544091590
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - levelMapSettings: {instanceID: 0}
+  - storage: {fileID: 11400000, guid: 294b3cb198e8dd64aa9e391dbe27a07b, type: 2}
+  - busIconOnMap: {instanceID: 0}
+  - targetIconOnMap: {instanceID: 0}
+  - selfObject: {instanceID: 0}
+  - maskTransform: {instanceID: 0}
+  - mapTransform: {instanceID: 0}
+  - mapContainerTransform: {instanceID: 0}
+  - iconObjectTemplate: {instanceID: 0}
+  - mapImage: {instanceID: 0}
+  - screenCamera: {instanceID: 0}
+  - mapSpriteRenderer: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
