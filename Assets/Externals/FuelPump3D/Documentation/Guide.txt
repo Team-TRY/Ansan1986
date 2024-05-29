@@ -1,0 +1,43 @@
+
+...................Fuel Pump 3D.....................................................
+
+Low poly 3d model of "Gas station fuel pump" perfectly fit for any kind of your game.
+
+
+Technical Details:-
+	
+	- Vertex count : 2868
+	- Used material(s) : Unity standard material
+
+Features:-
+
+	- Low poly design
+	- Simple box collider attached
+	- Unwrapped
+	- one skin included in this package
+	- Included post processing layers
+	- Demo scenes included.
+
+Folder details:-
+
+	Materials : Where the materials for the model located.
+	
+	Meshes : Contain FBX format of the 3d model.
+	
+	Textures : Contains Textures, that are in (.PSD) Photoshop file format
+	
+	(Other folders - Prefabs, Scenes)
+
+How to use:-
+	
+	Simply drag and drop the Fuel pump prefab to your scene and use it.
+	(Prefab located under 
+	Asset > FuelPump3D > Prefabs > "Fuelpump3D" ).
+
+..................................................................................
+
+About Us : We are "SR Studios Kerala", Game developing company located in Alappuzha, Kerala, India
+
+Contact : srstudioskerala@gmail.com
+
+................Thanks for downloading this package................................
