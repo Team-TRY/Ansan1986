@@ -88,6 +88,6 @@ public class BusDrivingController : MonoBehaviour
     private void DisplaySpeed()
     {
         float speed = rb.velocity.magnitude * 3.6f;
-        speedText.text = "Speed: " + speed.ToString("0.00") + " km/h";
+        speedText.text = speed.ToString("0.00") + " km/h";
     }
 }
