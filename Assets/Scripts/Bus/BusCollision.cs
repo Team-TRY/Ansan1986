@@ -19,7 +19,7 @@ public class BusCollision : MonoBehaviour
     private void OnCollisionEnter(Collision other) {
         if(other.gameObject.tag == "buliding")
         {
-            Debug.Log("Ãæµ¹");
+            ScoreManager.Scoring(ScoreManager.ScoreCategory.accident);
         }
     }
 }
