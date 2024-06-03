@@ -31,7 +31,7 @@ public class ScoreManager : MonoBehaviour
         
     }
 
-    public void Scoring(ScoreCategory CategoryName)
+    static public void Scoring(ScoreCategory CategoryName)
     {
         if(CategoryName == ScoreCategory.routing) score += 10;
         else if (CategoryName == ScoreCategory.speed) score += 10;

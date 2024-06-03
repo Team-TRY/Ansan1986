@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - buliding
+  - Bus
+  - BusDoor
+  - Seat
+  - BusStop
   layers:
   - Default
   - TransparentFX
