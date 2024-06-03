@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainGame.unity
     guid: 1df5aede402241a4183de4e70497b8f9
+  - enabled: 1
+    path: Assets/Scenes/Bus(Timer).unity
+    guid: 9e9929e3b00295449a520237f79e2d76
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 0615c9d0c302ca745b5621c99e5be139,
       type: 2}
