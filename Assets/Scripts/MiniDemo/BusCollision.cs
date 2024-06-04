@@ -17,7 +17,7 @@ public class BusCollision : MonoBehaviour
         {
             Debug.Log("빌딩충돌");
             remainTime.rTimeText.color = Color.red;
-            TimerColor(1.0f);
+            StartCoroutine(TimerColor());
             RemainTime.rTime -= 5;
         }
 
@@ -32,17 +32,10 @@ public class BusCollision : MonoBehaviour
         }
     }
 
-    public IEnumerator TimerColor(float duration)
+    public IEnumerator TimerColor()
     {
-        float time = 0.0f;
-
-        while(time<1.0f)
-        {
-            time += Time.deltaTime/duration;
-            Debug.Log("코루틴");
-        }
-
-        yield return null;
+        yield return new WaitForSeconds(1.0f);
+        remainTime.rTimeText.color = Color.black;
     }
 }
 
