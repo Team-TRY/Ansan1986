@@ -2,25 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using TMPro;
 public class BusCollision : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameManager gameManager;
+    public RemainTime remainTime;
+    
+    private void Start()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
-
     private void OnCollisionEnter(Collision other) {
         if(other.gameObject.tag == "buliding")
         {
             Debug.Log("ºôµùÃæµ¹");
+            remainTime.rTimeText.color = Color.red;
+            StartCoroutine(TimerColor());
             RemainTime.rTime -= 5;
         }
 
@@ -28,11 +25,17 @@ public class BusCollision : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(other.gameObject.tag == "EndPoint")
+        if(other.gameObject.tag == "CheckPoint")
         {
-            Time.timeScale = 0;
-            SceneManager.LoadScene("GameOver");
+            RemainTime.rTime += 15;
+            gameManager.NextLevel();
         }
+    }
+
+    public IEnumerator TimerColor()
+    {
+        yield return new WaitForSeconds(1.0f);
+        remainTime.rTimeText.color = Color.black;
     }
 }
 

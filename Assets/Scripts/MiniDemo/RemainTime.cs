@@ -27,4 +27,6 @@ public class RemainTime : MonoBehaviour
         min = rTime / 60;
         rTimeText.text = string.Format("{0:D2}:{1:D2}",(int)min, (int)sec );
     }
+ 
+
 }

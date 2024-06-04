@@ -10,6 +10,7 @@ TagManager:
   - Seat
   - BusStop
   - EndPoint
+  - CheckPoint
   layers:
   - Default
   - TransparentFX
