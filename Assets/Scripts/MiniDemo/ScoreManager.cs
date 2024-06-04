@@ -6,7 +6,7 @@ using UnityEngine.SocialPlatforms.Impl;
 public class ScoreManager : MonoBehaviour
 {
 
-    static public int score = 1500;
+    //static public int score = 0;
 
     public enum ScoreCategory
     {
@@ -22,7 +22,7 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -31,6 +31,7 @@ public class ScoreManager : MonoBehaviour
         
     }
 
+/*
     static public void Scoring(ScoreCategory CategoryName)
     {
         if(CategoryName == ScoreCategory.routing) score += 10;
@@ -42,5 +43,6 @@ public class ScoreManager : MonoBehaviour
         else if (CategoryName == ScoreCategory.accident) score -= 200;
     
     }
-        
+    
+  */      
 }

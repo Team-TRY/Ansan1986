@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BusCollision : MonoBehaviour
 {
@@ -21,6 +22,16 @@ public class BusCollision : MonoBehaviour
         {
             Debug.Log("ºôµùÃæµ¹");
             RemainTime.rTime -= 5;
+        }
+
+
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if(other.gameObject.tag == "EndPoint")
+        {
+            Time.timeScale = 0;
+            SceneManager.LoadScene("GameOver");
         }
     }
 }

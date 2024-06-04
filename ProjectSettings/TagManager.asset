@@ -9,6 +9,7 @@ TagManager:
   - BusDoor
   - Seat
   - BusStop
+  - EndPoint
   layers:
   - Default
   - TransparentFX

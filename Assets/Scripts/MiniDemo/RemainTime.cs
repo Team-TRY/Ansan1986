@@ -8,12 +8,13 @@ public class RemainTime : MonoBehaviour
 {
 
     public TMP_Text rTimeText;
-    public static float rTime = 65f;
+    public static float rTime ;
     private float sec;
     private float min;
     // Start is called before the first frame update
     void Start()
     {
+        rTime = 180f;
         rTimeText = GetComponent<TextMeshProUGUI>();
     }
 

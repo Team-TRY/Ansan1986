@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject scoreBoard, restartBtn;
-    [SerializeField] float playTime = 10f;
+    [SerializeField] float playTime = 180f;
 
     // Update is called once per frame
     void Update()
@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
         if(RemainTime.rTime <=0)
         {
             Time.timeScale = 0;
+
             SceneManager.LoadScene("GameOver");
 
         }
@@ -26,9 +27,8 @@ public class GameManager : MonoBehaviour
 
     public void restartGame()
     {
-        scoreBoard.gameObject.SetActive(false);
         Time.timeScale = 1;
         RemainTime.rTime = playTime;
-        SceneManager.LoadScene("Bus");
+        SceneManager.LoadScene("MiniDemo");
     }
 }
