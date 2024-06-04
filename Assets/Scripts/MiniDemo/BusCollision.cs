@@ -5,17 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class BusCollision : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameManager gameManager;
 
     private void OnCollisionEnter(Collision other) {
         if(other.gameObject.tag == "buliding")
@@ -28,10 +18,10 @@ public class BusCollision : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(other.gameObject.tag == "EndPoint")
+        if(other.gameObject.tag == "CheckPoint")
         {
-            Time.timeScale = 0;
-            SceneManager.LoadScene("GameOver");
+            RemainTime.rTime += 15;
+            gameManager.NextLevel();
         }
     }
 }

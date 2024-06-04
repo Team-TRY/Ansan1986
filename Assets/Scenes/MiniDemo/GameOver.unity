@@ -224,7 +224,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 477637519}
-  - component: {fileID: 477637518}
+  - component: {fileID: 477637520}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -232,21 +232,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &477637518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 477637517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90b271d45315bb343948d3b738d4b0ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreBoard: {fileID: 848134726}
-  restartBtn: {fileID: 848134724}
-  playTime: 180
 --- !u!4 &477637519
 Transform:
   m_ObjectHideFlags: 0
@@ -262,6 +247,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &477637520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477637517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b271d45315bb343948d3b738d4b0ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreBoard: {fileID: 848134726}
+  restartBtn: {fileID: 848134724}
+  playTime: 180
+  checkpoints: []
+  currentCheckpointIndex: 0
 --- !u!1 &657417293
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +374,36 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 657417294}
     m_Modifications:
+    - target: {fileID: 222013469508874367, guid: 460095f2b5adc2b4da153a7b53cfd8f4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 812603755102300902, guid: 460095f2b5adc2b4da153a7b53cfd8f4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3377646695123277985, guid: 460095f2b5adc2b4da153a7b53cfd8f4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3377646695123277985, guid: 460095f2b5adc2b4da153a7b53cfd8f4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 89.79998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154896112264337696, guid: 460095f2b5adc2b4da153a7b53cfd8f4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955166263218566881, guid: 460095f2b5adc2b4da153a7b53cfd8f4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -100
+      objectReference: {fileID: 0}
     - target: {fileID: 5283534046026462003, guid: 460095f2b5adc2b4da153a7b53cfd8f4,
         type: 3}
       propertyPath: m_Name
@@ -381,7 +413,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 477637518}
+      objectReference: {fileID: 477637520}
+    - target: {fileID: 6992420573240386421, guid: 460095f2b5adc2b4da153a7b53cfd8f4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: restartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148720290049980406, guid: 460095f2b5adc2b4da153a7b53cfd8f4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 100.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148720290049980406, guid: 460095f2b5adc2b4da153a7b53cfd8f4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 89.79999
+      objectReference: {fileID: 0}
     - target: {fileID: 7519773785104180498, guid: 460095f2b5adc2b4da153a7b53cfd8f4,
         type: 3}
       propertyPath: m_Pivot.x
