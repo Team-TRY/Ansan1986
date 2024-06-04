@@ -2591,6 +2591,7 @@ MonoBehaviour:
   steeringPower: 50
   _lever: {fileID: 5210433119305623582}
   _knob: {fileID: 8773069950111923573}
+  speedText: {fileID: 0}
 --- !u!1 &3933259516904086689
 GameObject:
   m_ObjectHideFlags: 0
