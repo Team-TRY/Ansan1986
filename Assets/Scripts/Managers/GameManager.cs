@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
         if(RemainTime.rTime <=0)
         {
             Time.timeScale = 0;
-            scoreBoard.gameObject.SetActive(true);
+            SceneManager.LoadScene("GameOver");
 
         }
     }

@@ -296,6 +296,7 @@ GameObject:
   - component: {fileID: 531897257}
   - component: {fileID: 531897256}
   - component: {fileID: 531897261}
+  - component: {fileID: 531897262}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -429,6 +430,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &531897262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531897255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b54fa4e0a223ad429387a3f19463e41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &817362915
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,15 +686,15 @@ RectTransform:
   m_GameObject: {fileID: 1242769395}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.0010299999, y: 0.0010299999, z: 0.0010299999}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1499454248}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -15.799988, y: -12.100006}
-  m_SizeDelta: {x: 2525.4, y: 1143.5}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 197, y: 137}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1242769397
 MonoBehaviour:
@@ -743,8 +756,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 479.8
-  m_fontSizeBase: 479.8
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -948,6 +961,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5457863067367157314, guid: 460095f2b5adc2b4da153a7b53cfd8f4,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: f4b7fa9bef0a4a3438c5cf2e7413d06b,
+        type: 2}
+    - target: {fileID: 5457863067367157314, guid: 460095f2b5adc2b4da153a7b53cfd8f4,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6992420573240386421, guid: 460095f2b5adc2b4da153a7b53cfd8f4,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1062,6 +1086,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8294053128677918138, guid: 460095f2b5adc2b4da153a7b53cfd8f4,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: f4b7fa9bef0a4a3438c5cf2e7413d06b,
+        type: 2}
+    - target: {fileID: 8294053128677918138, guid: 460095f2b5adc2b4da153a7b53cfd8f4,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

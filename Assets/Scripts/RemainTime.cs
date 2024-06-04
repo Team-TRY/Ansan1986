@@ -8,7 +8,9 @@ public class RemainTime : MonoBehaviour
 {
 
     public TMP_Text rTimeText;
-    public static float rTime = 5f;
+    public static float rTime = 65f;
+    private float sec;
+    private float min;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,8 @@ public class RemainTime : MonoBehaviour
     {
         rTime -= Time.deltaTime;
         if(rTime<0) rTime = 0;
-        rTimeText.text = "Time: " + Mathf.Round(rTime);
+        sec = rTime % 60;
+        min = rTime / 60;
+        rTimeText.text = string.Format("{0:D2}:{1:D2}",(int)min, (int)sec );
     }
 }
