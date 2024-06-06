@@ -11,6 +11,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainGame.unity
     guid: 1df5aede402241a4183de4e70497b8f9
+  - enabled: 1
+    path: Assets/Scenes/Bus(Score&Collider).unity
+    guid: 9e9929e3b00295449a520237f79e2d76
+  - enabled: 1
+    path: Assets/Scenes/MiniDemo/MiniDemo.unity
+    guid: 9c9d6d9ef74328f43aeb900aeff8b224
+  - enabled: 1
+    path: Assets/Scenes/MiniDemo/GameOver.unity
+    guid: ac5b96d7321c0834eb6ea45d8a945a04
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 0615c9d0c302ca745b5621c99e5be139,
       type: 2}
