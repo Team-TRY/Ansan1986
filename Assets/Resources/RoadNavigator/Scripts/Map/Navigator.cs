@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using System.Threading;
 using System.Linq;
 
-namespace InsaneSystems.RoadNavigator
+namespace Bus
 {
 	public class Navigator : MonoBehaviour
 	{

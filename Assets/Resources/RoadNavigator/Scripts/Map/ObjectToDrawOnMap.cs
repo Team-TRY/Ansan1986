@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace InsaneSystems.RoadNavigator
+namespace Bus
 {
 	public class ObjectToDrawOnMap : MonoBehaviour
 	{

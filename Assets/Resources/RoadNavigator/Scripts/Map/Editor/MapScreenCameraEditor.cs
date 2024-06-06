@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace InsaneSystems.RoadNavigator
+namespace Bus
 {
 	[CustomEditor(typeof(MapScreenCamera))]
 	public class MapScreenCameraEditor : Editor

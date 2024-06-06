@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 
-namespace InsaneSystems.RoadNavigator
+namespace Bus
 {
 	public class MapEditor : EditorWindow
 	{

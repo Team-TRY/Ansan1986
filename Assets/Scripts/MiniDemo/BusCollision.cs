@@ -3,39 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-public class BusCollision : MonoBehaviour
+
+namespace Bus
 {
-    public GameManager gameManager;
-    public RemainTime remainTime;
-    
-    private void Start()
+    public class BusCollision : MonoBehaviour
     {
+        public GameManager gameManager;
+        public RemainTime remainTime;
 
-    }
-    private void OnCollisionEnter(Collision other) {
-        if(other.gameObject.tag == "buliding")
+        private void Start()
         {
-            Debug.Log("ºôµùÃæµ¹");
-            remainTime.rTimeText.color = Color.red;
-            StartCoroutine(TimerColor());
-            RemainTime.rTime -= 5;
+
         }
 
-
-    }
-
-    private void OnTriggerEnter(Collider other) {
-        if(other.gameObject.tag == "CheckPoint")
+        private void OnCollisionEnter(Collision other)
         {
-            RemainTime.rTime += 15;
-            gameManager.NextLevel();
-        }
-    }
+            if (other.gameObject.tag == "buliding")
+            {
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½æµ¹");
+                remainTime.rTimeText.color = Color.red;
+                StartCoroutine(TimerColor());
+                RemainTime.rTime -= 5;
+            }
 
-    public IEnumerator TimerColor()
-    {
-        yield return new WaitForSeconds(1.0f);
-        remainTime.rTimeText.color = Color.black;
+
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.tag == "CheckPoint")
+            {
+                RemainTime.rTime += 15;
+                gameManager.NextLevel();
+            }
+        }
+
+        public IEnumerator TimerColor()
+        {
+            yield return new WaitForSeconds(1.0f);
+            remainTime.rTimeText.color = Color.black;
+        }
     }
 }
-

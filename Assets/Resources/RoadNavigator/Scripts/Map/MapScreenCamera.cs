@@ -4,7 +4,7 @@ using UnityEngine;
 using System.IO;
 using UnityEditor;
 
-namespace InsaneSystems.RoadNavigator
+namespace Bus
 {
 	[ExecuteInEditMode]
 	public class MapScreenCamera : MonoBehaviour

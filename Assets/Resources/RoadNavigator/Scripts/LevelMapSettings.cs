@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace InsaneSystems.RoadNavigator
+namespace Bus
 {
 	[CreateAssetMenu(fileName = "LevelMapSettings", menuName = "Insane Systems/Road GPS Navigator/Level Map Settings")]
 	public class LevelMapSettings : ScriptableObject

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace InsaneSystems.RoadNavigator
+namespace Bus
 {
 	public class NavigatorCrossRoadPoint : MonoBehaviour
 	{

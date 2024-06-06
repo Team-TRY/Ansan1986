@@ -1,4 +1,4 @@
-﻿namespace InsaneSystems.RoadNavigator
+﻿namespace Bus
 {
 	public class PointsDistance
 	{

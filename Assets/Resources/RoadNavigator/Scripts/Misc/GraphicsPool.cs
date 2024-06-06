@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace InsaneSystems.RoadNavigator.Misc
+namespace Bus.Misc
 {
 	public class GraphicsPool
 	{
