@@ -9,14 +9,14 @@ namespace Bus
     {
         [SerializeField] GameObject scoreBoard, restartBtn;
         [SerializeField] float playTime = 180f;
-        [SerializeField] Transform[] targets; // 타겟들
-        public GameObject[] checkpoints; // 체크포인트들
+        [SerializeField] Transform[] targets; 
+        public GameObject[] checkpoints; 
         public int currentCheckpointIndex;
         public static GameManager instance;
 
-        private Navigator navigator; // Navigator 인스턴스
-        private Map map; // Map 인스턴스
-        private bool isInitialized = false; // 초기화 여부
+        private Navigator navigator; 
+        private Map map;
+        private bool isInitialized = false;
 
         private void Awake()
         {
@@ -34,14 +34,14 @@ namespace Bus
         void Start()
         {
             currentCheckpointIndex = 0;
-            navigator = FindObjectOfType<Navigator>(); // Navigator 초기화
-            map = FindObjectOfType<Map>(); // Map 초기화
+            navigator = FindObjectOfType<Navigator>();
+            map = FindObjectOfType<Map>();
             ActivateCheckpoint(currentCheckpointIndex);
         }
 
         void Update()
         {
-            if (!isInitialized) // 맵 초기화
+            if (!isInitialized)
             {
                 map.ShowAsNavigator();
                 isInitialized = true;
@@ -55,14 +55,14 @@ namespace Bus
         {
             if (currentCheckpointIndex < checkpoints.Length)
             {
-                SetNewDestination(currentCheckpointIndex); // 현재 타겟 색상 변경
+                SetNewDestination(currentCheckpointIndex);
                 checkpoints[currentCheckpointIndex].SetActive(false);
                 currentCheckpointIndex++;
 
                 if (currentCheckpointIndex < checkpoints.Length)
                 {
                     ActivateCheckpoint(currentCheckpointIndex);
-                    SetNewDestination(currentCheckpointIndex); // 다음 타겟 설정
+                    SetNewDestination(currentCheckpointIndex);
                 }
                 else
                 {
@@ -77,20 +77,20 @@ namespace Bus
             if (index < checkpoints.Length)
             {
                 checkpoints[index].SetActive(true);
-                SetNewDestination(index); // 타겟을 활성화할 때 색상 변경
+                SetNewDestination(index);
             }
         }
 
-        private void SetNewDestination(int number) // 새로운 타겟 설정 메서드
+        private void SetNewDestination(int number)
         {
             if (targets.Length > number && targets[number])
             {
                 if (number > 0)
                 {
-                    targets[number - 1].GetComponent<Renderer>().material.color = Color.gray; // 이전 타겟 색상 변경
+                    targets[number - 1].GetComponent<Renderer>().material.color = Color.gray; 
                 }
 
-                targets[number].GetComponent<Renderer>().material.color = Color.red; // 현재 타겟 색상 변경
+                targets[number].GetComponent<Renderer>().material.color = Color.red;
                 navigator.SetTargetPoint(targets[number].position);
             }
             else

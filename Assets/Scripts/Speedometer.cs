@@ -23,7 +23,7 @@ public class Speedometer : MonoBehaviour
     {
         if (target != null)
         {
-            speed = target.CurrentSpeed * 3.6f; // 현재 속도를 km/h로 변환
+            speed = target.CurrentSpeed * 3.6f; 
 
             if (speedLabel != null)
                 speedLabel.text = ((int)speed+12) + " km/h";
