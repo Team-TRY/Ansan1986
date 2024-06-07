@@ -61,8 +61,8 @@ public class SoundManager : MonoBehaviour
     {
         if (bgm == null)
         {
-            GameObject bgmGO = new GameObject("BGM");
-            bgm = bgmGO.AddComponent<AudioSource>();
+            //GameObject bgmGO = new GameObject("BGM");
+            //bgm = bgmGO.AddComponent<AudioSource>();
             bgm.loop = true;
             bgm.volume = 0.8f;
         }
