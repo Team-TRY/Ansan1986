@@ -8,10 +8,15 @@ public class ToggleYellowLight : MonoBehaviour
     [SerializeField] private GameObject objectsToToggle;
     [SerializeField] private Button toggleButton;
 
-    private bool areObjectsActive = true;
+    private bool areObjectsActive = false; 
 
     private void Start()
     {
+        if (objectsToToggle != null)
+        {
+            objectsToToggle.SetActive(areObjectsActive);
+        }
+
         if (toggleButton != null)
         {
             toggleButton.onClick.AddListener(ToggleObjectsState);
@@ -21,7 +26,10 @@ public class ToggleYellowLight : MonoBehaviour
     private void ToggleObjectsState()
     {
         areObjectsActive = !areObjectsActive;
-        
-        objectsToToggle.SetActive(areObjectsActive);
+
+        if (objectsToToggle != null)
+        {
+            objectsToToggle.SetActive(areObjectsActive);
+        }
     }
 }

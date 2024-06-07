@@ -8,10 +8,18 @@ public class ToggleLight : MonoBehaviour
     [SerializeField] private GameObject[] objectsToToggle;
     [SerializeField] private Button toggleButton;
 
-    private bool areObjectsActive = true;
+    private bool areObjectsActive = false;
 
     private void Start()
     {
+        foreach (GameObject obj in objectsToToggle)
+        {
+            if (obj != null)
+            {
+                obj.SetActive(areObjectsActive);
+            }
+        }
+
         if (toggleButton != null)
         {
             toggleButton.onClick.AddListener(ToggleObjectsState);
@@ -21,7 +29,7 @@ public class ToggleLight : MonoBehaviour
     private void ToggleObjectsState()
     {
         areObjectsActive = !areObjectsActive;
-        
+
         foreach (GameObject obj in objectsToToggle)
         {
             if (obj != null)
