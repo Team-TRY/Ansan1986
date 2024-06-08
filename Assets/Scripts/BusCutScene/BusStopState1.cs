@@ -30,7 +30,13 @@ public class BusStopState1 : IBusStopState
         context.BusObject.SetActive(true);
         context.AnimBus.SetActive(false);
 
-        context.BusChar.SetActive(true);
-        context.AnimChar.SetActive(false);
+        foreach (var busChar in context.BusChars)
+        {
+            busChar.SetActive(true);
+        }
+        foreach (var animChar in context.AnimChars)
+        {
+            animChar.SetActive(false);
+        }
     }
 }

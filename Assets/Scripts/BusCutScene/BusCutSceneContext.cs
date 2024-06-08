@@ -9,8 +9,8 @@ public class BusCutsceneContext : MonoBehaviour
     public GameObject BusObject;
     public GameObject Lever;
     public GameObject AnimBus;
-    public GameObject BusChar, BusChar1, BusChar2;
-    public GameObject AnimChar, AnimChar1, AnimChar2;
+    public GameObject[] BusChars;
+    public GameObject[] AnimChars;
 
     private IBusStopState currentState;
     [HideInInspector]
