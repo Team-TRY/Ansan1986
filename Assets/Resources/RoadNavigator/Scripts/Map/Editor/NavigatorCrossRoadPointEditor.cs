@@ -1,6 +1,6 @@
 ﻿using UnityEditor;
 
-namespace InsaneSystems.RoadNavigator
+namespace Bus
 {
 	[CanEditMultipleObjects]
 	[CustomEditor(typeof(NavigatorCrossRoadPoint))]

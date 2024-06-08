@@ -6119,6 +6119,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401289936}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!82 &1404763551 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5439906511228762992, guid: 43bd6e67b4f4cf94f8d2644de9092fcb,
+    type: 3}
+  m_PrefabInstance: {fileID: 2698961001488156846}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1412371361
 GameObject:
   m_ObjectHideFlags: 0
@@ -11038,6 +11044,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4830646309109773777, guid: 43bd6e67b4f4cf94f8d2644de9092fcb,
+        type: 3}
+      propertyPath: bgm
+      value: 
+      objectReference: {fileID: 1404763551}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

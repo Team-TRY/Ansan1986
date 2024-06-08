@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace InsaneSystems.RoadNavigator
+namespace Bus
 {
 	public static class PathsGraph
 	{

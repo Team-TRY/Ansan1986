@@ -32,7 +32,6 @@ public class BusDrivingController : MonoBehaviour
         AppplyPower();
         ApplySteering();
         //UpdateWheel();
-        DisplaySpeed();
     }
 
     private void CheckInputs()
@@ -83,11 +82,5 @@ public class BusDrivingController : MonoBehaviour
         mesh.transform.rotation = quaternion;
 
         mesh.transform.localScale = col.transform.localScale;
-    }
-    
-    private void DisplaySpeed()
-    {
-        float speed = rb.velocity.magnitude * 3.6f;
-        speedText.text = "Speed: " + speed.ToString("0.00") + " km/h";
     }
 }

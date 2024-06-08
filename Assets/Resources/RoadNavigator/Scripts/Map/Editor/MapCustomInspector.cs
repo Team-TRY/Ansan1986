@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine.UI;
 
-namespace InsaneSystems.RoadNavigator
+namespace Bus
 {
 	[CustomEditor(typeof(Map))]
 	public class MapCustomInspector : Editor

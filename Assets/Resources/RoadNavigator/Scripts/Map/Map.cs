@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-namespace InsaneSystems.RoadNavigator
+namespace Bus
 {
 	public class Map : MonoBehaviour, IDragHandler
 	{

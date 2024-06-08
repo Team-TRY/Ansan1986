@@ -3,91 +3,116 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+namespace Bus
 {
-    [SerializeField] GameObject scoreBoard, restartBtn;
-    [SerializeField] float playTime = 180f;
-
-    public GameObject[] checkpoints; 
-    public int currentCheckpointIndex;
-    public static GameManager instance;
-
-    private void Awake()
+    public class GameManager : MonoBehaviour
     {
-        if(instance == null)
+        [SerializeField] GameObject scoreBoard, restartBtn;
+        [SerializeField] float playTime = 180f;
+        [SerializeField] Transform[] targets; 
+        public GameObject[] checkpoints; 
+        public int currentCheckpointIndex;
+        public static GameManager instance;
+
+        private Navigator navigator; 
+        private Map map;
+        private bool isInitialized = false;
+
+        private void Awake()
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            if(instance != null)
+            if (instance == null)
+            {
+                instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
             {
                 Destroy(this.gameObject);
             }
         }
-    }
 
-    void Start()
-    {
-        currentCheckpointIndex=0;
-        ActivateCheckpoint(currentCheckpointIndex);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Debug.Log(currentCheckpointIndex);
-        EndTime();
-    }
-
-    public void NextLevel()
-    {
-        
-        if (currentCheckpointIndex < checkpoints.Length)
+        void Start()
         {
-//            Debug.Log("NextLevel");
-            checkpoints[currentCheckpointIndex].SetActive(false);
-            currentCheckpointIndex++;
-            
+            currentCheckpointIndex = 0;
+            navigator = FindObjectOfType<Navigator>();
+            map = FindObjectOfType<Map>();
+            ActivateCheckpoint(currentCheckpointIndex);
+        }
+
+        void Update()
+        {
+            if (!isInitialized)
+            {
+                map.ShowAsNavigator();
+                isInitialized = true;
+            }
+
+            Debug.Log(currentCheckpointIndex);
+            EndTime();
+        }
+
+        public void NextLevel()
+        {
             if (currentCheckpointIndex < checkpoints.Length)
             {
-//                Debug.Log("currentCheckpointIndex++");
-                ActivateCheckpoint(currentCheckpointIndex);
+                SetNewDestination(currentCheckpointIndex);
+                checkpoints[currentCheckpointIndex].SetActive(false);
+                currentCheckpointIndex++;
+
+                if (currentCheckpointIndex < checkpoints.Length)
+                {
+                    ActivateCheckpoint(currentCheckpointIndex);
+                    SetNewDestination(currentCheckpointIndex);
+                }
+                else
+                {
+                    Time.timeScale = 0;
+                    SceneManager.LoadScene("GameOver");
+                }
+            }
+        }
+
+        private void ActivateCheckpoint(int index)
+        {
+            if (index < checkpoints.Length)
+            {
+                checkpoints[index].SetActive(true);
+                SetNewDestination(index);
+            }
+        }
+
+        private void SetNewDestination(int number)
+        {
+            if (targets.Length > number && targets[number])
+            {
+                if (number > 0)
+                {
+                    targets[number - 1].GetComponent<Renderer>().material.color = Color.gray; 
+                }
+
+                targets[number].GetComponent<Renderer>().material.color = Color.red;
+                navigator.SetTargetPoint(targets[number].position);
             }
             else
             {
-//                Debug.Log("GameEnd");
+                Debug.LogWarning("No target set up in GameManager script. Check it for null fields.");
+            }
+        }
+
+        void EndTime()
+        {
+            if (RemainTime.rTime <= 0)
+            {
                 Time.timeScale = 0;
                 SceneManager.LoadScene("GameOver");
             }
         }
-    }
 
-    private void ActivateCheckpoint(int index)
-    {
-        if (index < checkpoints.Length)
+        public void RestartGame()
         {
-//            Debug.Log("ActivateCheckpoint");
-            checkpoints[index].SetActive(true);
+            Time.timeScale = 1;
+            RemainTime.rTime = playTime;
+            SceneManager.LoadScene("MiniDemo");
         }
-    }
-
-    void EndTime()
-    {
-        if(RemainTime.rTime <=0)
-        {
-            Time.timeScale = 0;
-
-            SceneManager.LoadScene("GameOver");
-
-        }
-    }
-
-    public void restartGame()
-    {
-        Time.timeScale = 1;
-        RemainTime.rTime = playTime;
-        SceneManager.LoadScene("MiniDemo");
     }
 }

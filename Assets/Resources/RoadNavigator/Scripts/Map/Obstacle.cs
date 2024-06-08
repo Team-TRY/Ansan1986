@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace InsaneSystems.RoadNavigator
+namespace Bus
 {
 	[RequireComponent(typeof(BoxCollider2D))]
 	public class Obstacle : MonoBehaviour

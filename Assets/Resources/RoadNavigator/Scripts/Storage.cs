@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace InsaneSystems.RoadNavigator
+namespace Bus
 {
 	[CreateAssetMenu(fileName = "Storage", menuName = "Insane Systems/Road GPS Navigator/Storage")]
 	public class Storage : ScriptableObject
