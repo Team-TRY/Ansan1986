@@ -18,7 +18,7 @@ public class ScoreboardManager : MonoBehaviour
     public void AddScore(string name, int score)
     {
         scoreboard.entries.Add(new ScoreEntry(name, score));
-        scoreboard.entries.Sort((entry1, entry2) => entry2.score.CompareTo(entry1.score)); // °´·ÖÊıÅÅĞò
+        scoreboard.entries.Sort((entry1, entry2) => entry2.score.CompareTo(entry1.score)); // ê°ë¡¸é‘’íƒ¤åŸ¼
         SaveScoreboard();
     }
 

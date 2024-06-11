@@ -2,21 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
 
 namespace Bus
 {
     public class GameManager : MonoBehaviour
     {
-        [SerializeField] GameObject scoreBoard, restartBtn;
+        [SerializeField] private GameObject scoreBoard;
         [SerializeField] float playTime = 180f;
         [SerializeField] Transform[] targets; 
         public GameObject[] checkpoints; 
         public int currentCheckpointIndex;
         public static GameManager instance;
+        public TMP_InputField nameInput;
+        public Button submitBtn;
 
         private Navigator navigator; 
         private Map map;
         private bool isInitialized = false;
+        private ScoreBoard scoreBoardScript;
 
         private void Awake()
         {
@@ -37,6 +42,11 @@ namespace Bus
             navigator = FindObjectOfType<Navigator>();
             map = FindObjectOfType<Map>();
             ActivateCheckpoint(currentCheckpointIndex);
+            scoreBoardScript = scoreBoard.GetComponent<ScoreBoard>();
+            
+            nameInput.onValueChanged.AddListener(ValidateInput);
+            submitBtn.onClick.AddListener(SubmitScore);
+            submitBtn.interactable = false;
         }
 
         void Update()
@@ -47,7 +57,6 @@ namespace Bus
                 isInitialized = true;
             }
 
-            Debug.Log(currentCheckpointIndex);
             EndTime();
         }
 
@@ -117,7 +126,28 @@ namespace Bus
         {
             Time.timeScale = 0;
             scoreBoard.SetActive(true);
-            restartBtn.SetActive(true);
+        }
+
+        public void SubmitScore()
+        {
+            int score = ScoreBoard.score;
+            string name = nameInput.text;
+
+            if (string.IsNullOrEmpty(name) || name.Length != 3 || name.Contains(" "))
+            {
+                Debug.Log("Name");
+                return;
+            }
+
+            ScoreboardManager scoreboardManager = FindObjectOfType<ScoreboardManager>();
+            scoreboardManager.AddScore(name, score);
+            
+            scoreBoardScript.DisplayLeaderboard();
+        }
+
+        private void ValidateInput(string input)
+        {
+            submitBtn.interactable = input.Length == 3 && !input.Contains(" ");
         }
     }
 }
