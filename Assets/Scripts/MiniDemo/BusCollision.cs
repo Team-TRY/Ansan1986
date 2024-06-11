@@ -43,7 +43,7 @@ namespace Bus
         public IEnumerator TimerColor()
         {
             yield return new WaitForSeconds(1.0f);
-            remainTime.rTimeText.color = Color.black;
+            remainTime.rTimeText.color = Color.white;
         }
     }
 }

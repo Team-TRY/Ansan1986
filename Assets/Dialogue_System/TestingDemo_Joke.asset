@@ -13,20 +13,32 @@ MonoBehaviour:
   m_Name: TestingDemo_Joke
   m_EditorClassIdentifier: 
   dialogues:
-  - content: 
-    displayTime: 0
-  - content: let me tell u a story
+  - content: ...
     displayTime: 3
-  - content: A teacher asked her students to use the word "beans" in a sentenc
+  - content: "\uC548\uB155\uD558\uC138\uC694 \uAE30\uC0AC\uB2D8"
+    displayTime: 5
+  - content: "\uC81C\uAC00 \uB204\uAD6C\uB0D0\uACE0\uC694?"
     displayTime: 3
-  - content: One student replied, "My father grows beans."One student replied, "My
-      father grows beans."
+  - content: "\uB4A4\uB97C \uB3CC\uC544\uBCF4\uC138\uC694"
     displayTime: 3
-  - content: 
-    displayTime: 0
-  - content: Another said, "My mother cooks beans."
+  - content: "\uC800\uB294 \uC774 \uBC84\uC2A4\uC758 \uC548\uB0B4\uC591\uC774\uC5D0\uC694"
     displayTime: 3
-  - content: A third student spoke up, "We are all human beans."
+  - content: "\uC624\uB298 \uCCAB \uCD9C\uADFC\uC774\uC2DC\uB2C8\uAE4C"
     displayTime: 3
-  - content: ...Not ineresting right?
+  - content: "\uC6B4\uC804\uC744 \uC2DC\uC791\uD558\uAE30 \uC804\uC5D0 \uBA87 \uAC00\uC9C0\uB9CC
+      \uC54C\uB824\uB4DC\uB9B4\uAC8C\uC694"
+    displayTime: 3
+  - content: "\uC624\uB298\uC740 \uC548\uC0B0 \uC2DC\uB0B4\uBD80\uD130"
+    displayTime: 3
+  - content: "\uBC18\uC6D4 \uACF5\uB2E8\uAE4C\uC9C0 \uC6B4\uC804\uD558\uC154\uC57C
+      \uD574\uC694!"
+    displayTime: 3
+  - content: "\uB77C\uB514\uC624\uAC00 \uC2DC\uB044\uB7EC\uC6B0\uC2DC\uBA74 \uC624\uB978\uCABD
+      \uBC84\uD2BC\uC744 \uC870\uC791\uD558\uC2DC\uACE0"
+    displayTime: 5
+  - content: "\uC774\uC81C \uC2DC\uAC04\uC774 \uC5C6\uC73C\uB2C8\uAE4C"
+    displayTime: 3
+  - content: "\uC5B4\uC11C \uCD9C\uBC1C\uD558\uC138\uC694!"
+    displayTime: 3
+  - content: "\uC548\uC804 \uC6B4\uC804 \uBD80\uD0C1\uB4DC\uB824\uC694~"
     displayTime: 3
