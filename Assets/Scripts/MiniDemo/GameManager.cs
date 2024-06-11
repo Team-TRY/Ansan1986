@@ -66,8 +66,7 @@ namespace Bus
                 }
                 else
                 {
-                    Time.timeScale = 0;
-                    SceneManager.LoadScene("GameOver");
+                    ShowScoreBoard();
                 }
             }
         }
@@ -103,8 +102,7 @@ namespace Bus
         {
             if (RemainTime.rTime <= 0)
             {
-                Time.timeScale = 0;
-                SceneManager.LoadScene("GameOver");
+                ShowScoreBoard();
             }
         }
 
@@ -113,6 +111,13 @@ namespace Bus
             Time.timeScale = 1;
             RemainTime.rTime = playTime;
             SceneManager.LoadScene("MiniDemo");
+        }
+
+        private void ShowScoreBoard()
+        {
+            Time.timeScale = 0;
+            scoreBoard.SetActive(true);
+            restartBtn.SetActive(true);
         }
     }
 }

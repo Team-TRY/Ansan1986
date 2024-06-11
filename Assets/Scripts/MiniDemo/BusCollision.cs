@@ -29,10 +29,12 @@ namespace Bus
 
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerExit(Collider other)
         {
             if (other.gameObject.tag == "CheckPoint")
             {
+                remainTime.rTimeText.color = Color.green;
+                StartCoroutine(TimerColor());
                 RemainTime.rTime += 15;
                 gameManager.NextLevel();
             }
