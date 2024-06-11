@@ -143,6 +143,7 @@ namespace Bus
             scoreboardManager.AddScore(name, score);
             
             scoreBoardScript.DisplayLeaderboard();
+            submitBtn.interactable = false;
         }
 
         private void ValidateInput(string input)

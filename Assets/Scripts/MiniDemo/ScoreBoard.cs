@@ -32,7 +32,7 @@ public class ScoreBoard : MonoBehaviour
 
     void DisplayScore()
     {
-        tmp.text = string.Format("Score : {0}", score);
+        tmp.text = string.Format("최종 점수 : {0}", score);
     }
 
     public void DisplayLeaderboard()
@@ -40,10 +40,10 @@ public class ScoreBoard : MonoBehaviour
         ScoreboardManager scoreboardManager = FindObjectOfType<ScoreboardManager>();
         List<ScoreEntry> topScores = scoreboardManager.GetTopScores();
 
-        leaderboardText.text = "Top Scores:\n";
+        leaderboardText.text = "\n";
         foreach (var entry in topScores)
         {
-            leaderboardText.text += entry.name + ": " + entry.score + "\n";
+            leaderboardText.text += entry.name + ": <color=#000000>" + entry.score + "</color>\n";
         }
     }
 }
