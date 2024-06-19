@@ -17,14 +17,19 @@ using UnityEngine.XR.Content.Interaction;
         [SerializeField] private float maxSpeed = 10f; // 최대 속도
         [SerializeField] private float acceleration = 2f; // 가속도
         [SerializeField] private float steeringPower = 30f; // 기본 스티어링 파워
+        [SerializeField] private GameObject audioSourceObject; 
 
+        private AudioSource audioSource;
+        
         private float currentSpeed = 0f;
         private Vector3 moveDirection;
+        
 
         public float CurrentSpeed { get { return currentSpeed; } } // 현재 속도 프로퍼티
 
         void Start()
         {
+            audioSource = audioSourceObject.GetComponent<AudioSource>();
             if (_lever == null)
             {
                 Debug.LogWarning("XRLever reference not set.");
@@ -61,12 +66,24 @@ using UnityEngine.XR.Content.Interaction;
             {
                 case LeverState.Forward:
                     moveInput = 1f;
+                    if (!audioSource.isPlaying)
+                    {
+                        audioSource.Play();
+                    }
                     break;
                 case LeverState.Neutral:
                     moveInput = 0f;
+                    if (audioSource.isPlaying)
+                    {
+                        audioSource.Stop();
+                    }
                     break;
                 case LeverState.Reverse:
                     moveInput = -1f;
+                    if (audioSource.isPlaying)
+                    {
+                        audioSource.Stop();
+                    }
                     break;
             }
 
@@ -105,7 +122,7 @@ using UnityEngine.XR.Content.Interaction;
 
         private void OnKnobValueChange(float newValue)
         {
-            // 레버의 상태가 중립이 아닐 때만 입력을 확인하도록 합니다.
+            // 레버의 상태가 중립이 아닐 때만 입력을 확인
             if (_lever.state != LeverState.Neutral)
             {
                 CheckInputs();

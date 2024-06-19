@@ -14,7 +14,7 @@ public class RemainTime : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rTime = 180f;
+        rTime = 210f;
         rTimeText = GetComponent<TextMeshProUGUI>();
     }
 

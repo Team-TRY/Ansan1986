@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class UIMainMenu : MonoBehaviour
 {
     [SerializeField] private Button btnStartGame;
-    [SerializeField] private Button btnSettings;
     [SerializeField] private Button btnCredits;
     [SerializeField] private Button btnQuitGame;
 
@@ -19,7 +18,6 @@ public class UIMainMenu : MonoBehaviour
         Action buttonClickAction = () => SoundManager.Instance.SFXPlay("btnClick", clickSound);
 
         btnStartGame.onClick.AddListener(() => { buttonClickAction(); OpenPanel_StartGame(); });
-        btnSettings.onClick.AddListener(() => { buttonClickAction(); OpenPanel_Settings(); });
         btnCredits.onClick.AddListener(() => { buttonClickAction(); OpenPanel_Credits(); });
         btnQuitGame.onClick.AddListener(() => { buttonClickAction(); OpenPopup_QuitGame(); });
     }
