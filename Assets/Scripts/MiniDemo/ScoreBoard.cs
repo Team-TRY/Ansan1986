@@ -41,9 +41,10 @@ public class ScoreBoard : MonoBehaviour
         List<ScoreEntry> topScores = scoreboardManager.GetTopScores();
 
         leaderboardText.text = "\n";
-        foreach (var entry in topScores)
+        for (int i = 0; i < topScores.Count; i++)
         {
-            leaderboardText.text += entry.name + ": <color=#000000>" + entry.score + "</color>\n";
+            var entry = topScores[i];
+            leaderboardText.text += string.Format("{0}. {1}: <color=#000000>{2}</color>\n", i + 1, entry.name, entry.score);
         }
     }
 }
